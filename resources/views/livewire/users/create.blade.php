@@ -19,6 +19,10 @@
                 <input wire:model="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
+                <label for="password"></label>
+                <input wire:model="password" type="password" class="form-control" id="password" placeholder="Password">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
                 <label for="is_root"></label>
                 <input wire:model="is_root" type="text" class="form-control" id="is_root" placeholder="Is Root">@error('is_root') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>

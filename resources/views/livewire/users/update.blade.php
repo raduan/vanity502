@@ -11,6 +11,7 @@
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
+                    <input type="hidden" wire:model="password">
             <div class="form-group">
                 <label for="name"></label>
                 <input wire:model="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror

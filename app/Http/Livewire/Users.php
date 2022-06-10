@@ -5,13 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $email, $is_root, $account_type;
+    public $selected_id, $keyWord, $name, $email, $password, $is_root, $account_type;
     public $updateMode = false;
 
     public function render()
@@ -37,6 +38,7 @@ class Users extends Component
     {		
 		$this->name = null;
 		$this->email = null;
+        $this->password = null;
 		$this->is_root = null;
 		$this->account_type = null;
     }
@@ -46,6 +48,7 @@ class Users extends Component
         $this->validate([
 		'name' => 'required',
 		'email' => 'required',
+        'password' => 'required',
 		'is_root' => 'required',
 		'account_type' => 'required',
         ]);
@@ -53,6 +56,7 @@ class Users extends Component
         User::create([ 
 			'name' => $this-> name,
 			'email' => $this-> email,
+            'password' => Hash::make($this->password),
 			'is_root' => $this-> is_root,
 			'account_type' => $this-> account_type
         ]);
@@ -69,6 +73,7 @@ class Users extends Component
         $this->selected_id = $id; 
 		$this->name = $record-> name;
 		$this->email = $record-> email;
+        $this->password = $record->password;
 		$this->is_root = $record-> is_root;
 		$this->account_type = $record-> account_type;
 		
@@ -80,6 +85,7 @@ class Users extends Component
         $this->validate([
 		'name' => 'required',
 		'email' => 'required',
+        'password' => 'required',
 		'is_root' => 'required',
 		'account_type' => 'required',
         ]);
@@ -89,6 +95,7 @@ class Users extends Component
             $record->update([ 
 			'name' => $this-> name,
 			'email' => $this-> email,
+            'password' => $this->password,
 			'is_root' => $this-> is_root,
 			'account_type' => $this-> account_type
             ]);

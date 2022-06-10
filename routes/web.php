@@ -41,14 +41,3 @@ Auth::routes(['verify'=>true]);
 	Route::view('clientes', 'livewire.clientes.index')->middleware(['auth', 'verified']);
 	Route::view('categorias', 'livewire.categorias.index')->middleware(['auth', 'verified']);
 	Route::view('productos', 'livewire.productos.index')->middleware(['auth', 'verified']);
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
